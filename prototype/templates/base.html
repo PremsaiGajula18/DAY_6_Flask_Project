@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mini Events{% endblock %}</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 550px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 1px solid #dce5e6;
+            border-radius: 12px;
+            background: #fafcfb;
+            color: #163042;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+        nav a { text-decoration: none; color: #126d69; font-weight: bold; }
+        .btn {
+            background: #126d69;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            display: inline-block;
+        }
+        .btn:hover { background: #0e5653; }
+        .card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px 10px;
+            margin: 6px 0 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .alert {
+            background: #e6f9ed;
+            color: #166534;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #bbf7d0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simple Navbar -->
+    <nav>
+        <a href="{{ url_for('home') }}" style="font-size: 18px;">🎟️ MiniEvents</a>
+        <a href="{{ url_for('create_event') }}" class="btn">+ Post Event</a>
+    </nav>
+
+    <!-- Page Content Injected Here -->
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Post New Event{% endblock %}
+
+{% block content %}
+    <a href="{{ url_for('home') }}" style="color: #64748b; font-size: 13px; text-decoration: none;">&larr; Back to Events</a>
+    <h2 style="margin: 10px 0 20px;">Post a New Event</h2>
+
+    <form action="{{ url_for('create_event') }}" method="POST">
+        <label>Event Title:</label>
+        <input type="text" name="title" placeholder="e.g. Python Workshop" required>
+
+        <label>Venue / Location:</label>
+        <input type="text" name="venue" placeholder="e.g. Room 101 or Online" required>
+
+        <label>Date:</label>
+        <input type="date" name="date" required>
+
+        <label>Total Capacity (Seats):</label>
+        <input type="number" name="capacity" min="1" value="20" required>
+
+        <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">
+            Publish Event
+        </button>
+    </form>
+{% endblock %}

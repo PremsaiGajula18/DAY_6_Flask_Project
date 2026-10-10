@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Explore Events ({{ event_list|length }})</h2>
+
+    {% for event in event_list %}
+        {% set available = event.capacity - event.booked %}
+        <div class="card">
+            <h3 style="margin: 0 0 6px;">{{ event.title }}</h3>
+            <p style="margin: 0 0 10px; color: #64748b; font-size: 14px;">
+                📅 {{ event.date }} &middot; 📍 {{ event.venue }}
+            </p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-weight: 600; font-size: 14px; color: {% if available == 0 %}#dc2626{% else %}#126d69{% endif %};">
+                    {{ event.booked }} / {{ event.capacity }} booked ({{ available }} left)
+                </span>
+                <a href="{{ url_for('event_details', event_id=event.id) }}" class="btn" style="padding: 6px 12px; font-size: 13px;">
+                    View & Register &rarr;
+                </a>
+            </div>
+        </div>
+    {% else %}
+        <p>No events found. Click "+ Post Event" to add one!</p>
+    {% endfor %}
+{% endblock %}
